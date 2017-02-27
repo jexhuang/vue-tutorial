@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson7</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{fullname}}
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            name: 'jex',
+            age: '25'
+        },
+        computed: {
+            fullname: function () {
+                return this.name + ':' + this.age;
+            }
+        }
+    });
+</script>
+
+</html>

@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson2</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>{{message}}1</div>
+        <div v-text='message'></div>
+        <div v-html='message'></div>
+        <div v-once>{{message}}</div>
+        <div v-if='displayMe'>v-if</div>
+        <div v-show='displayMe'>v-show</div>
+        <a v-bind:href="linkUrl" v-bind:title="linkTitle" v-bind:something="something">{{message}}</a>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: '<div style="color:red">Hello world</div>',
+            displayMe: true,
+            linkUrl: 'http://www.jex.life',
+            linkTitle: 'Jex\'s blog',
+            something: 'something',
+        }
+    });
+</script>
+
+</html>

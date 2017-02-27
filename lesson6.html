@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson6</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="name" placeholder="name">
+        <input type="text" v-model="age" placeholder="age">
+        <button @click='handlerAdd'>Add</button>
+        <table border='1'>
+            <tr v-for="(user,index) in users">
+                <td>{{index}}</td>
+                <td>{{user.name}}
+                </td>
+                <td>{{user.age}}
+                </td>
+                <td><button @click='handlerDelete(index)'>X</button></td>
+            </tr>
+        </table>
+
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            users: [{
+                'name': 'jex',
+                age: 25
+            }, {
+                'name': 'wen',
+                age: 25
+            }],
+            name: '',
+            age: ''
+        },
+        methods: {
+            'handlerAdd': function () {
+                this.users.push({
+                    'name': this.name,
+                    'age': this.age
+                });
+            },
+            'handlerDelete': function (index) {
+                this.users.splice(index, 1);
+            }
+        }
+    });
+</script>
+
+</html>

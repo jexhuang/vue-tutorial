@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson8</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <template-component></template-component>
+        <custom-component @on-child-emit="handleChildEmit" msg="from parent" v-bind:parentmsg="parentMsg"></custom-component>
+    </div>
+</body>
+<template id='customTemplate'>
+    <div>
+        <div>{{msg}}</div>
+        <div>{{parentmsg}}</div>
+        <button @click="emitData">emit</button>
+    </div>
+</template>
+<script>
+    Vue.component('templateComponent', {
+        template: '<div>{{msg}}</div>',
+        data: function () {
+            return {
+                msg: 'hello'
+            }
+        }
+
+    })
+    Vue.component('customComponent', {
+        template: '#customTemplate',
+        props: {
+            msg: {
+                default: 'default',
+                type: String
+            },
+            parentmsg: {
+
+            }
+        },
+        data: function () {
+            return {
+
+            }
+        },
+        methods: {
+            emitData: function () {
+                this.$emit('on-child-emit', 2);
+            }
+        }
+
+    })
+    var app = new Vue({
+        el: '#app',
+        data: {
+            parentMsg: "parent msg"
+        },
+        methods: {
+            handleChildEmit: function (args) {
+                console.log(args);
+            }
+        }
+    });
+</script>
+
+</html>

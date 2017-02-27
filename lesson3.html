@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson3</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>{{counter}}</div>
+        <button v-on:click='handlerClick'>clickMe!</button>
+        <button @click='handlerClick'>clickMe!</button>
+        <input type="text" v-on:keyup='handlerKeyup'>
+        <div>{{message}}</div>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            message: ''
+
+        },
+        methods: {
+            handlerClick: function () {
+                this.counter++;
+            },
+            handlerKeyup: function (e) {
+                this.message = e.target.value;
+            }
+        }
+    });
+</script>
+
+</html>

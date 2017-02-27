@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson4</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-bind:value='inputValue' v-on:input='handlerInput'>
+        <input type="text" v-model="modelValue">
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            inputValue: 'default msg',
+            modelValue :'model msg'
+        },
+        methods: {
+            handlerInput: function (e) {
+                console.log(e.target.value);
+                this.inputValue = e.target.value;
+            }
+        }
+
+    });
+</script>
+
+</html>

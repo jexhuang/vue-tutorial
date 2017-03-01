@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson9</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <form :action="action">
+            name:<input type="text" id='name' name='name' v-model='form_name'>
+            <label for="name">{{form_name}}</label>
+            <br> age:
+            <input type="text" id='age' name='age' v-model='form_age'>
+            <label for="age">{{form_age}}</label>
+            <br> habbit:
+            <select name="habbit" id="habbit" v-model='form_habbit'>
+                <option value="1">ball</option>
+                <option value="2">game</option>
+                <option value="3">running</option>
+            </select>
+            <label for="habbit">{{form_habbit}}</label>
+            <br> sex:
+            <input type="radio" value='1' name='sex' v-model='form_sex'>male
+            <input type="radio" value='0' name='sex' v-model='form_sex'>female
+            <label for="sex">{{form_sex}}</label>
+            <br> food:
+            <input type="checkbox" value='chicken' name='sex' v-model='form_food'>chicken
+            <input type="checkbox" value='beef' name='sex' v-model='form_food'>beef
+            <label for="sex">{{form_food}}</label>
+            <button type='button' @click="handlerFormSubmit">submit</button>
+        </form>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            action: "http://localhost:3000/post",
+            form_name: "name",
+            form_age: "24",
+            form_habbit: "3",
+            form_sex: "0",
+            form_food: ['beef']
+        },
+        methods: {
+            handlerFormSubmit: function () {
+                let requestBody = {
+                    "name": this.form_name,
+                    "age": this.form_age,
+                    "habbit": this.form_habbit,
+                    "sex": this.form_sex,
+                    "food": this.form_food
+                }
+                console.log(requestBody);
+            }
+        }
+    });
+</script>
+
+</html>
